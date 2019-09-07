@@ -1,0 +1,100 @@
+﻿@model DressBookingMVC.Models.DressBookingDataModel.Dress
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    @Html.ActionLink("Back to List", "Index")
+    <hr />
+    <table class="table-condensed">
+        <tr>
+            <td>
+                <img src="@Html.DisplayFor(model => model.FrontPicLink)" width="200" />
+            </td>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.Size.Name)*@
+                        Size
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Size.Name)
+                    </dd>
+
+
+                    <dt>
+                        Price to buy
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PriceToBuy)
+                    </dd>
+
+                    <dt>
+                        Price to book
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PriceToBook)
+                    </dd>
+
+                    <dt>
+                        Is bought
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsBought)
+                    </dd>
+                    @if (User.IsInRole(DressBookingMVC.Helpers.Constants.AdminRoleName))
+                    {
+                        <dt>
+                            Is copy
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.IsCopy)
+                        </dd>
+
+                    }
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Wedding)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Wedding)
+                    </dd>
+                </dl>
+            </td>
+            </tr>
+        <tr>
+            <td colspan="2">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+                }
+            </td>
+        </tr>
+    </table>
+
+   
+</div>

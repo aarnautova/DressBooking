@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[Dresses]
+(
+	[Id] BIGINT NOT NULL PRIMARY KEY, 
+    [Name] NVARCHAR(50) NOT NULL, 
+    [SizeId] INT NOT NULL
+	CONSTRAINT [FK_Dress_Size] FOREIGN KEY ([SizeId]) REFERENCES [Size]([Id]), 
+    [PriceToBuy] MONEY NOT NULL, 
+	[PriceToBook] MONEY NOT NULL, 
+    [IsBought] BIT NOT NULL DEFAULT 0, 
+	[IsCopy] BIT NOT NULL DEFAULT 0, 
+    [Wedding] BIT NOT NULL DEFAULT 0,
+	[FrontPicLink] NVARCHAR(MAX) NOT NULL
+)
